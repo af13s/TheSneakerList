@@ -118,7 +118,6 @@
                     <connections>
                         <outlet property="CodeName_Label" destination="iXh-Xx-lIz" id="L5I-Y3-0QT"/>
                         <outlet property="Image_Display" destination="saU-P5-eyS" id="Jlb-gZ-j63"/>
-                        <outlet property="Info_Request" destination="Sz7-Dj-NHL" id="3Zh-t6-ys1"/>
                         <outlet property="Name_Label" destination="n6u-PO-gBw" id="9gj-Eb-e1U"/>
                         <outlet property="Price_Label" destination="R0S-Gb-qSW" id="KRZ-zm-oew"/>
                         <outlet property="Size_Picker" destination="N4i-Fp-27J" id="qpF-Vl-PkT"/>
@@ -252,7 +251,6 @@
                                     <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="FindNow:" destination="zqC-cZ-7yz" eventType="touchUpInside" id="MIJ-l0-yt6"/>
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="foundDisplay" id="w7j-fE-4ft"/>
                                 </connections>
                             </button>
@@ -302,6 +300,6 @@
         <image name="sneaker-list-logo" width="357" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hcJ-db-gRO"/>
+        <segue reference="w7j-fE-4ft"/>
     </inferredMetricsTieBreakers>
 </document>
