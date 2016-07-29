@@ -1,0 +1,77 @@
+//
+//  shoeObj.swift
+//  TheSneakerList
+//
+//  Created by Andrew Florial on 7/8/16.
+//  Copyright © 2016 Florial. All rights reserved.
+//
+
+import Foundation
+
+class shoeObj
+{
+    
+    var line : String!
+    var name : String!
+    var lprice :String!
+    var URL : String!
+    var fullname: String!
+    var codename: String?
+    var sizeArr = [String]()
+    var imgURL: String!
+    
+    init(l: String)
+    {
+        self.line = l
+        
+        print ("STRING: "+self.line)
+        print()
+        
+        var propArr = line.componentsSeparatedByString("|")
+        self.name = propArr[0]
+        print ("NAME: "+self.name)
+        print()
+        
+        
+        var nameArr = self.name.componentsSeparatedByString("*")
+        
+        let isIndexValid = nameArr.indices.contains(1)
+        
+        if (isIndexValid == true)
+        {self.codename = nameArr[1]}
+        else{codename = ""}
+        
+        print ("CODENAME: "+self.codename!)
+        print ()
+        
+        
+        self.fullname = nameArr[0]
+        print ("REGULAR NAME"+self.fullname)
+        print()
+        
+        
+        self.lprice = propArr[1]
+        print ("PRICE: "+self.lprice)
+        print()
+        
+        
+        self.URL = propArr[2]
+        print ("URL"+self.URL)
+        print()
+        
+        
+        var sizeformat = propArr[3].stringByReplacingOccurrencesOfString("[", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        
+        sizeformat = sizeformat.stringByReplacingOccurrencesOfString("]", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        
+        sizeformat = sizeformat.stringByReplacingOccurrencesOfString("'", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        
+       sizeArr = sizeformat.componentsSeparatedByString(",")
+        print ("SIZEARRAY: ",self.sizeArr)
+        
+        self.imgURL = propArr[4]
+        self.imgURL = self.imgURL.stringByReplacingOccurrencesOfString(" ", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        print ("IMGURL ",self.imgURL)
+        
+    }
+}
