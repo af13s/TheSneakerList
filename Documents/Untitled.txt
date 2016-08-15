@@ -1,0 +1,10 @@
+export PYTHONPATH="$PYTHONPATH:/Users/andrewflorial/google_appengine"
+export PATH=/Users/andrewflorial/Software/apache-maven-3.3.9/bin:$PATH
+
+
+API_KEY_NAME: Backend Server Key
+API_KEY_VALUE: AIzaSyC2EZXfJbkvhmJUcOlSVspajqmyyISjhas
+
+
+
+

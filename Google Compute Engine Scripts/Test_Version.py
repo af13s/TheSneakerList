@@ -5,9 +5,7 @@
 import os
 import requests
 from lxml import html
-import csv
 import sys
-import json
 import urllib.request
 from multiprocessing import Process
 
@@ -53,7 +51,7 @@ class RetailerObj:
 def printnamelist():
     shoelist = open('shoelist.txt', 'a')
     sys.stdout = shoelist
-    for key in allShoes.keys(): 
+    for key in allShoes.keys():
         allShoes[key].shoelist()
     shoelist.close()
 
@@ -131,7 +129,7 @@ def Crawler ( Robj ):
 
 
 
-    
+
 if __name__ == "__main__":
 
     try:
@@ -178,7 +176,7 @@ if __name__ == "__main__":
                '//*[@id="top"]/body/div[2]/div[1]/div[3]/div/div/div[2]/div/div/ul/li/div/div[1]/a/@href',
                '//*[@id="top"]/body/div[2]/div[1]/div[3]/div/div/div[2]/div/div/ul/li/div/div[2]/span/span[@class]/text()',
                '//*[@id]/img/@src']
-                
+
     stseedurls = ['http://www.stadiumgoods.com/air-jordan',
                   'http://www.stadiumgoods.com/nike',
                   'http://www.stadiumgoods.com/adidas',
@@ -195,7 +193,7 @@ if __name__ == "__main__":
                '//*[@id="main"]/div[1]/table/tbody/tr[1]/td[2]/div/div[1]/a/@href',
                '//*[@id="main"]/div[1]/table/tbody/tr[1]/td[3]/div/text()',
                '//*[@id]/img/@src']
-                
+
     rlseedurls = ["http://www.rif.la/search_item.php"]
 
     rlpginc = 'page'
@@ -211,7 +209,7 @@ if __name__ == "__main__":
                'url',
                'price',
                'image']
-                
+
     soseedurls = ['http://www.solesupremacy.com/collections/all']
 
     sopginc = 'page'
@@ -225,7 +223,7 @@ if __name__ == "__main__":
                'url',
                'price',
                'image']
-                
+
     pbseedurls = []
 
     pbpginc = 'page'
@@ -239,7 +237,7 @@ if __name__ == "__main__":
                'url',
                'price',
                'image']
-                
+
     sonseedurls = []
 
     sonpginc = 'page'
@@ -253,7 +251,7 @@ if __name__ == "__main__":
                'url',
                'price',
                'image']
-                
+
     idxseedurls = []
 
     idxpginc = 'page'
@@ -267,7 +265,7 @@ if __name__ == "__main__":
                'url',
                'price',
                'image']
-                
+
     csseedurls = []
 
     cspginc = 'page'
@@ -281,7 +279,7 @@ if __name__ == "__main__":
                'url',
                'price',
                'image']
-                
+
     p23seedurls = []
 
     p23pginc = 'page'
@@ -295,7 +293,7 @@ if __name__ == "__main__":
                'url',
                'price',
                'image']
-                
+
     cmseedurls = []
 
     cmpginc = 'page'
@@ -309,7 +307,7 @@ if __name__ == "__main__":
                'url',
                'price',
                'image']
-                
+
     bkseedurls = []
 
     bkpginc = 'page'
@@ -323,7 +321,7 @@ if __name__ == "__main__":
                'url',
                'price',
                'image']
-                
+
     hgseedurls = []
 
     hgpginc = 'page'
@@ -331,6 +329,8 @@ if __name__ == "__main__":
     hgnxpgpath = ''
 
     hgnxval = 'Next'
+
+    ## weird sites kixclusive - project blitz
 
 ########################################################################################################################################
 
@@ -353,20 +353,3 @@ if __name__ == "__main__":
     #Getting printing to function properly with the multiprocessing has been a hassle, this script may need some debugging for this to function properly
     printshoelist()
     printnamelist()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
