@@ -7,7 +7,8 @@ import urllib.request
 import requests
 from multiprocessing import Process
 from gcloud import datastore
-import Constants
+import sys #can be removed when storing directly to database
+import os # can also be removed
 
 allShoes = {}
 
@@ -16,9 +17,21 @@ allShoes = {}
 
 # parse html request and get get tree structure for xpath searching
 def htmlTree( URL ):
-        page = requests.get(URL)
-        tree = html.fromstring(page.content)
-        return tree
+    page = requests.get(URL)
+    tree = html.fromstring(page.content)
+    return tree
+
+##def getSizes(shoe):
+##    tree = htmlTree(shoe.URL)
+##    shoe.sizes = (tree.xpath(#sizexpath))
+
+##def getPrice(shoe):
+##    pricexpath = ""
+##    for size in shoe.sizes:
+##        tree = htmlTree(shoe.URL)
+##        for sizes in shoe.sizes
+##        pricexpath = tree.getpath(r)  #make sure to only return value that exactly matches string #test amout of values returned
+##        shoe.price.append(tree.xpath(pricexpath)) #test the correctness of the returned value
 
 # Scrape Given URL to extract fields
 def Scraper (tree, xpaths):
@@ -30,25 +43,30 @@ def Scraper (tree, xpaths):
     lowestprice = (tree.xpath(xpaths[2]))
     #This will extract a list of images
     imgURL =  (tree.xpath(xpaths[3]))
+
     for x in range (0,len(shoeName_codeName)): #iterate through all shoe listings on page
         if shoeURL[x] in allShoes.keys(): #if value is not unique to keys exclude
             continue
         else:
             try:
-                print ("Storing New Shoe", "NAME:", shoeName_codeName[x].strip(), "PRICE:", lowestprice[x])
+
+                print ("Storing New Shoe", "NAME:", shoeName_codeName[x].strip(), "PRICE:", lowestprice[x], '\n')
                 allShoes[shoeURL[x]] = (ShoeObj(shoeName_codeName[x].strip(), lowestprice[x], shoeURL[x], imgURL[x]))
-                #
-                orig_stdout = sys.stdout
+
+                orig_sys = sys.stdout #saving output stream
+
                 ##
-                shoelist = open('shoelist.txt', 'a')
-                sys.stdout = shoelist
+                shoelist = open('shoelist2.txt', 'a')
+                sys.stdout = shoelist #redirecting output to output file shoelist.txt
                 allShoes[shoeURL[x]].shoelist()
                 ##
-                namelist = open('namelist.txt', 'a')
-                sys.stdout = namelist
+                namelist = open('namelist2.txt', 'a')
+                sys.stdout = namelist #redirecting output to output file namelist.txt
                 allShoes[shoeURL[x]].namelist()
-                #
-                sys.stdout = orig_stdout
+                ##
+
+                sys.stdout = orig_sys
+
             except IndexError:
                 print("OUT OF RANGE ITEM")
 
@@ -57,18 +75,23 @@ def Crawler ( Robj ):
     for seed in Robj.seeds: #seed urls declared in retailer class
         pnum=1
         while( True ): #will continute until the break function inside the function is triggered
-            url = seed + '?' + Robj.pgr +  '=' + str(pnum) + '&' + Robj.urlflags
+            try:
+                url = seed + '?' + Robj.urlflgs[0] +  '=' + str(pnum) + '&' + Robj.urlflgs[2]
+            except IndexError:
+                print ("No Extra Flags")
+                url = seed + '?' + Robj.urlflgs[0] +  '=' + str(pnum)
+
             print ("Scraping Site: " , url)
             tree = htmlTree (url)
             Scraper(tree, Robj.xpaths) #scrapes each page on the fly
-            #print ('Does:' , tree.xpath(Robj.nxpath)[0].strip() ,'equal' , Robj.nxval) #// used for testing nxval validity
+            #print ('Does:' , tree.xpath(Robj.xpaths[4])[0].strip() ,'equal' , Robj.urlflgs[1]) #// used for testing nxval validity
             # this searches the html page for the "next" element which varies page to page, var specific to page stored in Robj.nxval
             if (pnum == 1):
-                if (tree.xpath(Robj.nxpath)[0].strip() != Robj.nxval ): #Very Important IF STATEMENT if its the first page there is no prev so next text in first position
+                if (tree.xpath(Robj.xpaths[4])[0].strip() != Robj.urlflgs[1] ): #Very Important IF STATEMENT if its the first page there is no prev so next text in first position
                     break
             else:
                 try:
-                    if (tree.xpath(Robj.nxpath)[1].strip() != Robj.nxval ): # Every other page should have a nxval in the second position, after previous val second position
+                    if (tree.xpath(Robj.xpaths[4])[1].strip() != Robj.urlflgs[1] ): # Every other page should have a nxval in the second position, after previous val second position
                         break
                 except IndexError: # On last page there is a previous button but no next button so this is the last page
                     break
@@ -77,39 +100,62 @@ def Crawler ( Robj ):
 
 class ShoeObj:
     def __init__(self, name, lprice, URL, imgURL):
-        self.name = name.replace('"', '*')
-        self.lprice = lprice
+        self.name = name.replace('"', '*') #make optional
+        self.lprice = lprice #make optional
         self.URL = URL
         self.imgURL = imgURL
-        self.sizes = [0]
+        self.sizes = []
+        self.multSZ = False;
+        self.prices= []
 
-    #def namelist (self):
-        #print ('\"' +self.name +'\",') ##.replace('*', '') #Print out shoelist names
+    def namelist (self):
+        print ('\"' +self.name +'\",') ##.replace('*', '') #Print out shoelist names
 
-    #def shoelist (self):
-    #    print ('"' ,self.name, '|', self.lprice ,'|' , self.URL ,'|' , self.sizes , '|' ,self.imgURL,'",') #Print out full shoe information
+    def shoelist (self):
+        print ('"' ,self.name, '|', self.lprice ,'|' , self.URL ,'|' , self.sizes , '|' ,self.imgURL,'",') #Print out full shoe information
 
 
 class RetailerObj:
-        def __init__(self, xpathvars, seedurls, pgincr, nextpgxpath, nxtval, urlflags=''):
-            self.xpaths = xpathvars     # name,url,price,image
+        def __init__(self, seedurls, xpathvars, urlflags): #change nextpgxpath to go into the object, change flags to take pgincn nxval and extras
             self.seeds = seedurls       # Www.example.com
-            self.pgr = pgincr           # 'p' or 'page'
-            self.nxpath = nextpgxpath   # path to page next
-            self.nxval = nxtval
-            self.urlflags = urlflags           # if exists, html flags to max displays
+            self.xpaths = xpathvars     # name,url,price,image
+            self.urlflgs = urlflags     # flags : PageID, NextID, ExtraFlgs
 
 #################################### FUNCTIONS ##################################################################
 if __name__ == "__main__":
 
+    try:
+        os.remove("shoelist.txt")
+        os.remove("namelist.txt")
+    except FileNotFoundError:
+        pass
+
     Retailers = [] #this will contain all retailer objects
-    Retailers.append(RetailerObj(stpaths, stseedurls, stpginc, stnxpgpath, stnxval)) #these are the variables declared above for stadium goods
-    Retailers.append(RetailerObj(fxpaths, flseedurls, flpginc, flnxpgpath, flnxval, flflags)) #these are the variables declared above for flight club
-    Process_1 = Process(target=Crawler , args=(Retailers[0],)) #syntax for making the crawler function call on object 1 to be made into a process
-    Process_2 = Process(target=Crawler , args=(Retailers[1],))
-    #this runs the processes simultaneously, main speed problem is waiting for the http request
-    Process_1.start()
-    Process_2.start()
-    #This forces the compiler to wait for the processes 1 and 2 to finish before it continues to the print functions
-    Process_1.join()
-    Process_2.join()
+
+    consts = open ('Constants.txt','r') #open retailers list
+
+    lists = [[] for i in range(0, 3)] #create three lists within a list
+    a=0
+    rcount=0 #count of all retailers
+
+    for line in consts:
+        if line[0] == '$':
+            rcount=rcount+1
+            a = 0 #reset list reference
+            print ("Adding a retailer ", rcount ,"to list " )
+            Retailers.append(RetailerObj(lists[0],lists[1],lists[2])) # retailer object instantiation
+            lists[0] =[]; lists[1]=[]; lists[2]=[]
+            continue
+        if line[0] == ' ' or line[0] == '#' or line[0] == '\n':
+            continue
+        if line[0] != '&':
+            lists[a].append(line[:-1])
+        else:
+            a=a+1
+        if line[0] == '!':
+            break
+
+    consts.close() #close list of retailers
+
+    for retailer in Retailers:
+        Crawler(retailer)

@@ -1,0 +1,28 @@
+Method to extract the right xpaths on a given page
+  - learn to use regular expessions to properly identify shoes within html
+  - use xpaths to identify the nav bar items - can use brands to formulate
+
+
+
+  Ultimate Goal: streamline build process
+
+  - Gather Seed Sites
+  - Generate relevant htmls (has the shoes on them) or - navigate through the entire site and collect all the shoe listings
+  - write function to collect shoe information: name, codename, price:size,  shoeURL and imgURL
+  - Store information to DataStore
+
+  Project To Do List
+
+
+
+  shoeidentify method
+  information collect method
+  xpath gather method
+  info gather method
+
+  shoeRUL information collection
+  possibly use xpath, regular expression, string search, programmatic click to change page conttent like price, 
+
+   store all sizes available in shoeobj
+
+   shoenaming schema to identify slightly different named shoes

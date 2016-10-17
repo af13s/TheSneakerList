@@ -41,30 +41,14 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TheSneakerList/StartPage.swift"
-            timestampString = "490209646.17635"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "searchAutocompleteEntriesWithSubstring(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "TheSneakerList/View2.swift"
-            timestampString = "489848230.337414"
+            timestampString = "496337107.408166"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "viewDidLoad()"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -74,13 +58,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheSneakerList/shoeObj.swift"
-            timestampString = "489853946.621124"
+            timestampString = "496337107.408166"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
             landmarkName = "init(l:)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -106,13 +90,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheSneakerList/View2.swift"
-            timestampString = "489850528.093866"
+            timestampString = "496337107.408166"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "viewDidLoad()"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

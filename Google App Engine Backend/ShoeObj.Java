@@ -1,17 +1,19 @@
 //Java Backend Functions
-
-
 // AutoComplete Implementation //
 
 import java.io.*;
+import java.lang.*;
 
-public class ShoeObj 
-{ 
-	string name;
+public class ShoeObj
+{
+		string name;
     string lprice;
     string sURL;
     string imgURL;
+		List<String> xpaths = new ArrayList<String>(); // Size(button), Price
+
     List sizes = new ArrayList();
+		Pair<Integer, Integer> sizePrice = new Pair<>();
 
 	public ShoeObj (name, lprice, sURL, imgURL)
 	{
@@ -20,6 +22,7 @@ public class ShoeObj
       this.sURL=sURL
       this.imgURL = imgURL;
       getSizes();
+			getPrices();
   	}
 
 
@@ -29,7 +32,13 @@ public class ShoeObj
         // tree = htmlTree (sURL)
         // sizes.addall((map (str.strip, tree.xpath()))) # sizes
    	}
-        
+
+	public void getPrices()
+	{
+			// code to update price based on size collected
+			//implement a web scraping feature that can click the button of the size desired and return a price if selection exists
+	}
+
 
     def namelist (self):
         print ('\"' +self.name +'\",') ##.replace('*', '') #Print out shoelist names

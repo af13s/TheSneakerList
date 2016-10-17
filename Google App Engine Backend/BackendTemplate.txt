@@ -1,0 +1,25 @@
+## Backend Template ##
+
+
+Important Classes
+
+  Shoeobj
+  Persistant Data Manager
+  Users
+  Application Session
+
+
+Important Methods
+
+  shoeAutoComplete()
+    receive string by text change
+    return list of shoes
+
+  shoeRequest()
+    receive string by submission
+    return shoeObj
+
+  sendInformation()
+    receive email string
+    send email with populate information
+    return status of message

@@ -1,0 +1,116 @@
+## Sole Supremecy
+    sopaths = ['//*[@id="products"]/main/div/div[1]/div/div/a/p/text()',
+               '//*[@id="products"]/main/div/div[1]/div/div/a/@href',
+               '//*[@id="products"]/main/div/div[1]/div/div/a/div[2]/span/text()',
+               '//*[@id="products"]/main/div/div[1]/div/div/a/div[1]/div/img/@src']
+
+    soseedurls = ['http://www.solesupremacy.com/collections/all']
+
+    sopginc = 'page'
+
+    sonxpgpath = '//*[@id="products"]/main/div/div[2]/div/div/div/ul/li[8]/a/@title'
+
+    sonxval = 'Next'
+
+
+
+    ## Kixclusive
+
+    kxpaths = ['names',
+               '//*[@id="ProductCSSGrid"]/a',
+               'price',
+               'image']
+
+    kxseedurls = ['https://www.kixclusive.com/m-3-air-jordan.aspx',
+                  'https://www.kixclusive.com/m-25-jordan-other.aspx',
+                  'https://www.kixclusive.com/m-4-nike-air-force.aspx',
+                  'https://www.kixclusive.com/m-5-nike-skateboarding.aspx',
+                  'https://www.kixclusive.com/m-26-nike-dunk.aspx',
+                  'https://www.kixclusive.com/m-6-nike-basketball.aspx',
+                  'https://www.kixclusive.com/m-16-nike-running.aspx',
+                  'https://www.kixclusive.com/m-28-nike-training.aspx',
+                  'https://www.kixclusive.com/m-40-lv-x-kanye-west.aspx',
+                  'https://www.kixclusive.com/m-48-christian-louboutin.aspx',
+                  'https://www.kixclusive.com/m-45-adidas.aspx',
+                  'https://www.kixclusive.com/m-59-bape.aspx',
+                  'https://www.kixclusive.com/m-55-reebok.aspx']
+
+    kxpginc = 'page'
+
+    kxnxpgpath = '//*[@id="centerdiv"]/table/tbody/tr[1]/td/table[2]/tbody/tr/td[2]/table/tbody/tr[3]/td/div/a[6]'
+
+    kxnxval = 'Next'
+
+
+    
+
+    ##Hotnessfeet
+    hfpaths = ['names',
+               '//*[@id="ProductCSSGrid"]/a',
+               'price',
+               'image']
+
+    hfseedurls = ['http://hotnessfeet.com/Jordan_c2.htm?page=all',
+                  'http://hotnessfeet.com/Reebok_c6.htm',
+                  'http://hotnessfeet.com/Nike_c3.htm?page=all'
+                  ]
+
+
+
+    ## PaddedRoom
+
+    prpaths = ['//*[@id="collection"]/div[2]/div/div[2]/a/h4/text()',
+               '//*[@id="collection"]/div[2]/div/div[2]/a/@href',
+               '//*[@id="collection"]/div[2]/div/div[2]/a/span[2]/text()',
+               '//*[@id="collection"]/div[2]/div/div[1]/a/img/@src']
+
+    prseedurls = ['http://mypaddedroom.com/collections/jordan',
+                  'http://mypaddedroom.com/collections/nike',
+                  'http://mypaddedroom.com/collections/adidas',
+                  'http://mypaddedroom.com/collections/puma',
+                  'http://mypaddedroom.com/collections/asics',
+                  'http://mypaddedroom.com/collections/reebok-collection'
+                  ]
+
+    prpginc = 'page'
+
+    prnxpgpath = '//*[@id="collection"]/div[3]/div/ul/li[3]/a'
+
+    prnxval = 'Next'
+
+    ##Shop Collection Miami
+    scmpaths = ['//*[@id="products"]/main/div/div[1]/div/div/a/p/text()',
+               '//*[@id="products"]/main/div/div[1]/div/div/a/@href',
+               '//*[@id="products"]/main/div/div[1]/div/div/a/div[2]/span/small/text()',
+               '//*[@id="products"]/main/div/div[1]/div/div/a/div[1]/div/img/@src']
+
+    scmseedurls = ['http://www.shopthecollectionmiami.com/collections/all']
+
+    scmpginc = 'page'
+
+    scmnxpgpath = '//*[@id="products"]/main/div/div[2]/div/div/div/ul/li[7]/a'
+
+    scmnxval = 'Next'
+
+
+    ## The Mag Park
+    mppaths = ['//*[@id="sandBox"]/div/div/div/div/div/div[2]/div[1]/div[1]/text()',
+               '//*[@id="sandBox"]/div/div/div/div/div/div[1]/div/a/@href',
+               '//*[@id="sandBox"]/div/div/div/div/div/div[2]/div[1]/div[2]/span/text()',
+               '//*[@id="sandBox"]/div/div/div/div/div/div[1]/div/a/img/@src']
+
+    mpseedurls = ['https://themagpark.com/collections/mens-footwear']
+
+    ## SneakerDon
+    pbpaths = ['//*[@id="content"]/div[2]/div/div[2]/a/text()',
+               '//*[@id="content"]/div[2]/div/div[2]/a/@href',
+               '//*[@id="content"]/div[2]/div/div[4]/text()',
+               '//*[@id="content"]/div[2]/div/div[1]/a//@src']
+
+    pbseedurls = ['https://sneakerdon.com/sneakers']
+
+    pbpginc = 'page'
+
+    pbnxpgpath = '//*[@id="content"]/div[3]/div[1]/a[11]'
+
+    pbnxval = 'Next'

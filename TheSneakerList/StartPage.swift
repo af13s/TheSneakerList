@@ -56,19 +56,19 @@ class StartPage: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         textField.delegate = self
         autocompleteTableView!.delegate = self
         autocompleteTableView!.dataSource = self
-        autocompleteTableView!.scrollEnabled = true
-        autocompleteTableView!.hidden = true
+        autocompleteTableView!.isScrollEnabled = true
+        autocompleteTableView!.isHidden = true
     }
     
     
     
     ///////////
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
     {
         
-        autocompleteTableView.hidden = false
+        autocompleteTableView.isHidden = false
         
-        let substring = (textField.text! as NSString).stringByReplacingCharactersInRange(range, withString: string)
+        let substring = (textField.text! as NSString).replacingCharacters(in: range, with: string)
         
         searchAutocompleteEntriesWithSubstring(substring)
         return true     // not sure about this - could be false
@@ -77,17 +77,17 @@ class StartPage: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     
     
     //////////
-    func searchAutocompleteEntriesWithSubstring(substring: String)
+    func searchAutocompleteEntriesWithSubstring(_ substring: String)
     {
-        autocompleteShoeNames.removeAll(keepCapacity: false)
+        autocompleteShoeNames.removeAll(keepingCapacity: false)
         
         for curString in nameList
         {
             let myString:NSString! = curString as NSString
             
-            let substringRange :NSRange! = myString.rangeOfString(substring, options: .CaseInsensitiveSearch)
+            let substringRange :NSRange! = myString.range(of: substring, options: .caseInsensitive)
             
-            if (substringRange.location  == 0 || curString.containsString(substring.lowercaseString))
+            if (substringRange.location  == 0 || curString.contains(substring.lowercased()))
                 
             {
                 autocompleteShoeNames.append(curString)//uppercaseString
@@ -109,7 +109,7 @@ class StartPage: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     
     
     //////////
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return autocompleteShoeNames.count
     }
@@ -117,7 +117,7 @@ class StartPage: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     
     
     ////////
-    func textFieldShouldReturn(textField: UITextField) -> Bool
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
     {
         self.view.endEditing(true)
         return false
@@ -125,33 +125,33 @@ class StartPage: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     
     
     /////////////
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         
         let autoCompleteRowIdentifier = "cell"
-        let cell : UITableViewCell = tableView.dequeueReusableCellWithIdentifier(autoCompleteRowIdentifier, forIndexPath: indexPath) as UITableViewCell
-        let index = indexPath.row as Int
+        let cell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: autoCompleteRowIdentifier, for: indexPath) as UITableViewCell
+        let index = (indexPath as NSIndexPath).row as Int
         cell.textLabel!.text = autocompleteShoeNames[index]
         return cell
     }
     
     
     ////////////
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        let selectedCell : UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
+        let selectedCell : UITableViewCell = tableView.cellForRow(at: indexPath)!
         textField.text = selectedCell.textLabel!.text
-        self.autocompleteTableView!.hidden = true
+        self.autocompleteTableView!.isHidden = true
 
     }
     
     
     
     //////////////
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-            let destviewcon = segue.destinationViewController as! View2
-            let found = shoeObj(l: shoeList[nameList.indexOf(textField.text!.lowercaseString)!])
+            let destviewcon = segue.destination as! View2
+            let found = shoeObj(l: shoeList[nameList.index(of: textField.text!.lowercased())!])
             
             destviewcon.displayshoe = found
         

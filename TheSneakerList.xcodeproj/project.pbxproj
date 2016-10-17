@@ -322,15 +322,18 @@
 					EC6C9E0D1D2AD7B3001B304C = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 754T29D9Y8;
+						LastSwiftMigration = 0800;
 					};
 					EC6C9E241D2AD7B3001B304C = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 754T29D9Y8;
+						LastSwiftMigration = 0800;
 						TestTargetID = EC6C9E0D1D2AD7B3001B304C;
 					};
 					EC6C9E2F1D2AD7B3001B304C = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 754T29D9Y8;
+						LastSwiftMigration = 0800;
 						TestTargetID = EC6C9E0D1D2AD7B3001B304C;
 					};
 				};
@@ -561,6 +564,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "TheSneakerList/TheSneakerList-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -574,6 +578,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.thesneakerlist.TheSneakerList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "TheSneakerList/TheSneakerList-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -585,6 +590,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thesneakerlist.TheSneakerListTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TheSneakerList.app/TheSneakerList";
 			};
 			name = Debug;
@@ -597,6 +603,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thesneakerlist.TheSneakerListTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TheSneakerList.app/TheSneakerList";
 			};
 			name = Release;
@@ -608,6 +615,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thesneakerlist.TheSneakerListUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = TheSneakerList;
 			};
 			name = Debug;
@@ -619,6 +627,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thesneakerlist.TheSneakerListUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = TheSneakerList;
 			};
 			name = Release;

@@ -1,0 +1,17 @@
+To do for this classes
+
+PRIMARY TASKS
+
+1.  structure classes to to retreive a stored shoeobj from database 
+
+2.  structure class to obtain size and price of shoe from API call
+
+3.  write a function that accepts a string and queries the database puts result in a List
+
+4.  write a function that takes items in list and compares to retrieve the lowest price
+
+
+SECONDARY TASKS
+
+Build necessary component files for GAE deployment
+Configure Files

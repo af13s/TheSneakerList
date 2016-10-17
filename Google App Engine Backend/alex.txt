@@ -1,0 +1,17 @@
+Primary Tasks
+
+time frame of completion - 2 months
+after production maintenance - 3 months
+potential partnership - 25% to 50% equity
+costs - first part finish - 2,500
+beta release - how big do you want to make it - how do you want to release it
+
+
+
+Describe all the functionality and requirements you want in the project
+
+- keep track of all transactions that occurred
+- earnings report
+- complaints received
+- defective shoe policy
+- business model necessary

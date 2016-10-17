@@ -28,36 +28,36 @@ class View2: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
         self.Size_Picker.delegate = self
         self.Size_Picker.dataSource = self
         
-        Name_Label.text = displayshoe.fullname.uppercaseString
-        Price_Label.text = displayshoe.lprice.uppercaseString
-        CodeName_Label.text = displayshoe.codename?.uppercaseString
+        Name_Label.text = displayshoe.fullname.uppercased()
+        Price_Label.text = displayshoe.lprice.uppercased()
+        CodeName_Label.text = displayshoe.codename?.uppercased()
         
         loadImageFromUrl(displayshoe.imgURL, view: Image_Display)
         
     }
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int
+    func numberOfComponents(in pickerView: UIPickerView) -> Int
     {
         return 1
     }
     
-    func loadImageFromUrl(url: String, view: UIImageView){
+    func loadImageFromUrl(_ url: String, view: UIImageView){
         
         // Create Url from string
-        let url = NSURL(string: url)!
+        let url = URL(string: url)!
         
         // Download task:
         // - sharedSession = global NSURLCache, NSHTTPCookieStorage and NSURLCredentialStorage objects.
-        let task = NSURLSession.sharedSession().dataTaskWithURL(url) { (responseData, responseUrl, error) -> Void in
+        let task = URLSession.shared.dataTask(with: url, completionHandler: { (responseData, responseUrl, error) -> Void in
             // if responseData is not null...
             if let data = responseData{
                 
                 // execute in UI thread
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                DispatchQueue.main.async(execute: { () -> Void in
                     view.image = UIImage(data: data)
                 })
             }
-        }
+        }) 
         
         // Run task
         task.resume()
@@ -66,17 +66,17 @@ class View2: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
     {
         return displayshoe.sizeArr.count
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return displayshoe.sizeArr[row]
     }
     
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         print (displayshoe.sizeArr[row])
     }
     override func didReceiveMemoryWarning() {

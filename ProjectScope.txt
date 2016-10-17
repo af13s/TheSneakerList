@@ -1,0 +1,15 @@
+iOS App
+  portrait view only
+
+
+Part 1
+  frequently updated database
+  record keeping for all shoes requested
+  payment method - link program to wells fargo account
+  email services
+
+Part 2
+  Catalog view
+  user profiles
+  administrator page
+  

@@ -27,13 +27,13 @@ class shoeObj
         print ("STRING: "+self.line)
         print()
         
-        var propArr = line.componentsSeparatedByString("|")
+        var propArr = line.components(separatedBy: "|")
         self.name = propArr[0]
         print ("NAME: "+self.name)
         print()
         
         
-        var nameArr = self.name.componentsSeparatedByString("*")
+        var nameArr = self.name.components(separatedBy: "*")
         
         let isIndexValid = nameArr.indices.contains(1)
         
@@ -60,17 +60,17 @@ class shoeObj
         print()
         
         
-        var sizeformat = propArr[3].stringByReplacingOccurrencesOfString("[", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        var sizeformat = propArr[3].replacingOccurrences(of: "[", with: "", options: NSString.CompareOptions.literal, range: nil)
         
-        sizeformat = sizeformat.stringByReplacingOccurrencesOfString("]", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        sizeformat = sizeformat.replacingOccurrences(of: "]", with: "", options: NSString.CompareOptions.literal, range: nil)
         
-        sizeformat = sizeformat.stringByReplacingOccurrencesOfString("'", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        sizeformat = sizeformat.replacingOccurrences(of: "'", with: "", options: NSString.CompareOptions.literal, range: nil)
         
-       sizeArr = sizeformat.componentsSeparatedByString(",")
+       sizeArr = sizeformat.components(separatedBy: ",")
         print ("SIZEARRAY: ",self.sizeArr)
         
         self.imgURL = propArr[4]
-        self.imgURL = self.imgURL.stringByReplacingOccurrencesOfString(" ", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        self.imgURL = self.imgURL.replacingOccurrences(of: " ", with: "", options: NSString.CompareOptions.literal, range: nil)
         print ("IMGURL ",self.imgURL)
         
     }
