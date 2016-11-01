@@ -13,16 +13,24 @@ Method to extract the right xpaths on a given page
 
   Project To Do List
 
+  - shoeidentify method
+  - information collect method
+  - xpath gather method
+  - info gather method
 
+ shoeRUL information collection
+ possibly use xpath, regular expression, string search, programmatic click to change page conttent like price, 
 
-  shoeidentify method
-  information collect method
-  xpath gather method
-  info gather method
-
-  shoeRUL information collection
-  possibly use xpath, regular expression, string search, programmatic click to change page conttent like price, 
-
-   store all sizes available in shoeobj
+   store all sizes available in shoeobj from individual shoe size and price
 
    shoenaming schema to identify slightly different named shoes
+
+
+
+
+
+BIG LONG TERM MISSION
+
+Create Program that can learn to collect products from the internet
+- Big vision, database of world’s products
+- Internet product market

@@ -1,0 +1,17 @@
+#/bin/bash
+
+sudo yum install gcc
+sudo yum install wget 
+sudo yum install epel-release
+sudo yum install -y python-pip
+sudo gcloud init
+sudo pip install --upgrade google-api-python-client
+sudo pip install virtualenv
+
+sudo virtualenv ‘venv$1’
+sudo source ‘venv$1/bin/activate’
+sudo unzip master.zip
+cd python-docs-samples-master/datastore/api
+sudo pip install -r requirements.txt
+
+sudo yum-builddep python
